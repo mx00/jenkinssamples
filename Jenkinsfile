@@ -17,10 +17,10 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = 'kenchenwebapp1'
-    def webAppName = 'kenchenwebapp1'
+    def resourceGroup = 'pcjenkinsdemo'
+    def webAppName = 'jenkinsdemo'
     // login Azure
-    withCredentials([azureServicePrincipal('vs_china_jenkins')]) {
+    withCredentials([azureServicePrincipal('azsrvprincipal')]) {
       sh '''
         az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
         az account set -s $AZURE_SUBSCRIPTION_ID
