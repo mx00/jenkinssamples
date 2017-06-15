@@ -13,7 +13,7 @@ node {
   }
   
   stage('build') {
-    mvn package
+    sh 'mvn clean package'
   }
   
   stage('deploy') {
