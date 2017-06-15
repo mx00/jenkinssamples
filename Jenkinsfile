@@ -17,6 +17,8 @@ node {
   }
   
   stage('deploy') {
+    def resourceGroup = 'kenchenwebapp1'
+    def webAppName = 'kenchenwebapp1'
     // login Azure
     withCredentials([azureServicePrincipal('vs_china_jenkins')]) {
       sh '''
@@ -25,7 +27,7 @@ node {
       '''
     }
     // get publish settings
-    def pubProfilesJson = sh script: 'az webapp deployment list-publishing-profiles -g kenchenwebapp1 -n kenchenwebapp1', returnStdout: true
+    def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
     def ftpProfile = getFtpPublishProfile pubProfilesJson
     // upload package
     sh "curl -T target/calculator-1.0.war $ftpProfile.url/webapps/ROOT.war -u '$ftpProfile.username:$ftpProfile.password'"
