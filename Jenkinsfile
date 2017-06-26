@@ -20,7 +20,7 @@ node {
     def resourceGroup = 'plaid-dev'
     def webAppName = 'plaid'
     // login Azure
-    withCredentials([azureServicePrincipal('<azureServicePrincipal>')]) {
+    withCredentials([azureServicePrincipal('<2416a5de-52e9-4a3d-82e1-616b575a9f94>')]) {
       sh '''
         az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
         az account set -s $AZURE_SUBSCRIPTION_ID
