@@ -17,8 +17,8 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = '<myResourceGroup>'
-    def webAppName = '<app_name>'
+    def resourceGroup = 'plaid-dev'
+    def webAppName = 'plaid'
     // login Azure
     withCredentials([azureServicePrincipal('<azureServicePrincipal>')]) {
       sh '''
